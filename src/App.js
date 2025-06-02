@@ -214,14 +214,17 @@ const App = () => {
   </Col>
 </Row>
 
-
+<div  style={{
+    border: '1px solid gray',
+  paddingTop: 5,
+  paddingRight:5,}} >
       {/* Filter row */}
       <Row justify="end" gutter={16} style={{ marginBottom: 12 }}>
         <Col>
           <Select placeholder="Select Plan" style={{ width: 180 }}>
-            <Option value="Monthly">Basic</Option>
-            <Option value="yearly">Advanced</Option>
-          
+            <Option value="basic">Basic</Option>
+            <Option value="advanced">Advanced</Option>
+          <Option value="enterprise">Enterprise</Option>
           </Select>
         </Col>
         <Col>
@@ -242,7 +245,7 @@ const App = () => {
       <Row justify="end" style={{ marginBottom: 16 }}>
         <Input.Search placeholder="Search" style={{ width: 300 }} />
       </Row>
-
+</div>
       {/* Table */}
       <Table
       rowSelection={{}}

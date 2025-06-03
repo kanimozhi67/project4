@@ -4,7 +4,9 @@ import {
   Tag,
   Button,
   Select,
+  Form,
   Input,
+  Modal,
   Space,
   Row,
   Col,
@@ -16,6 +18,7 @@ import {
   DeleteOutlined,
   EyeOutlined,
 } from '@ant-design/icons';
+import AddCompanyModal from './AddCompanyModal';
 
 const { Option } = Select;
 
@@ -114,6 +117,13 @@ const initialData = [
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
+   const [modalVisible, setModalVisible] = useState(false);
+
+  const handleAdd = (data) => {
+    console.log('Company Data:', data);
+    setModalVisible(false);
+  };
+
   const pageSize = 10;
 
   const paginatedData = initialData.slice(
@@ -154,7 +164,10 @@ const App = () => {
           }}
         >
           <span>{plan}</span>
-          <Tag color="purple">Upgrade</Tag>
+          {/* <Tag color="purple">Upgrade</Tag> */}
+            <Button color="pink" variant="solid">
+            Upgrade
+          </Button>
         </div>
       ),
     },
@@ -171,9 +184,17 @@ const App = () => {
       sorter: (a, b) => a.status.localeCompare(b.status),
       render: (status) =>
         status === 'Active' ? (
-          <Tag color="green">Active</Tag>
+          <Tag   style={{
+    backgroundColor: 'green',
+    borderColor: 'green',
+    color: 'white',
+  }}>Active</Tag>
         ) : (
-          <Tag color="red">Inactive</Tag>
+          <Tag   style={{
+    backgroundColor: 'red',
+    borderColor: 'red',
+    color: 'white',
+  }}>Inactive</Tag>
         ),
     },
     {
@@ -200,7 +221,7 @@ const App = () => {
     </div>
   </Col>
   <Col>
-   <Button
+   <Button type="primary" onClick={() => setModalVisible(true)} 
   icon={<PlusOutlined />}
   style={{
     backgroundColor: 'orange',
@@ -213,7 +234,11 @@ const App = () => {
 
   </Col>
 </Row>
-
+   <AddCompanyModal
+        visible={modalVisible}
+        onCancel={() => setModalVisible(false)}
+        onAdd={handleAdd}
+      />
 <div  style={{
     border: '1px solid gray',
   paddingTop: 5,

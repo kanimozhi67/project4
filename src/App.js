@@ -19,6 +19,7 @@ import {
   EyeOutlined,
 } from '@ant-design/icons';
 import AddCompanyModal from './AddCompanyModal';
+import EditScreen from './EditScreen';
 
 const { Option } = Select;
 
@@ -203,7 +204,16 @@ const App = () => {
       render: () => (
         <Space>
           <EyeOutlined />
-          <EditOutlined />
+          <Button type="primary" onClick={() => setModalVisible(true)} 
+  style={{
+    backgroundColor: 'white',
+    borderColor: 'white',
+    color: 'black',
+  }}
+><EditOutlined />
+
+</Button>
+          
           <DeleteOutlined />
         </Space>
       ),
@@ -235,6 +245,11 @@ const App = () => {
   </Col>
 </Row>
    <AddCompanyModal
+        visible={modalVisible}
+        onCancel={() => setModalVisible(false)}
+        onAdd={handleAdd}
+      />
+       <EditScreen
         visible={modalVisible}
         onCancel={() => setModalVisible(false)}
         onAdd={handleAdd}

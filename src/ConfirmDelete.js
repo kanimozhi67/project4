@@ -11,11 +11,9 @@ const ConfirmDelete = ({visible, onCancel, onDelete }) => {
     <Modal
         closable={false} 
        title={
-        <div justify="centre" align="middle" style={{ position: 'relative', paddingRight: 40 }}>
+        <div justify="space-between" align="middle" style={{ position: 'relative', paddingRight: 40 }}>
           <h1 >Confirm Delete</h1>
-          <p>you want to delete all the marked items, that can't be undo 
-            once you delete.
-          </p>
+          
         
         </div>
        }
@@ -23,7 +21,9 @@ const ConfirmDelete = ({visible, onCancel, onDelete }) => {
       open={visible}
        centered
       onCancel={onCancel}
-      footer={[
+      footer={
+        
+    <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
         <Button key="cancel" onClick={onCancel}
          >
           Cancel
@@ -33,12 +33,15 @@ const ConfirmDelete = ({visible, onCancel, onDelete }) => {
     backgroundColor: 'red',
     borderColor: 'red',
     color: 'white',
+   
   }}>
           Yes, Delete
         </Button>,
-      ]}
+      </div>}
     >
-    
+    <p style={{ fontSize:20, }}>you want to delete all the marked items, that can't be undo 
+            once you delete.
+          </p>
     </Modal>
   );
 };

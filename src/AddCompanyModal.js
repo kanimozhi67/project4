@@ -21,6 +21,7 @@ const AddCompanyModal = ({ visible, onCancel, onAdd }) => {
   return (
     <Modal
         closable={false} 
+         centered
        title={
         <div style={{ position: 'relative', paddingRight: 40 }}>
           Add New Company

@@ -20,6 +20,7 @@ import {
 } from '@ant-design/icons';
 import AddCompanyModal from './AddCompanyModal';
 import EditScreen from './EditScreen';
+import ConfirmDelete from './ConfirmDelete';
 
 const { Option } = Select;
 
@@ -118,13 +119,22 @@ const initialData = [
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
-   const [modalVisible, setModalVisible] = useState(false);
+   const [modalVisible1, setModalVisible1] = useState(false);
+   const [modalVisible2, setModalVisible2] = useState(false);
+   const [modalVisible3, setModalVisible3] = useState(false);
 
   const handleAdd = (data) => {
     console.log('Company Data:', data);
-    setModalVisible(false);
+    setModalVisible1(false);
   };
-
+  const handleEdit = (data) => {
+    console.log('Company Data:', data);
+    setModalVisible2(false);
+  };
+ const handleDelete = (data) => {
+    console.log('Company Data:', data);
+    setModalVisible3(false);
+  };
   const pageSize = 10;
 
   const paginatedData = initialData.slice(
@@ -204,7 +214,7 @@ const App = () => {
       render: () => (
         <Space>
           <EyeOutlined />
-          <Button type="primary" onClick={() => setModalVisible(true)} 
+          <Button type="primary" onClick={() => setModalVisible2(true)} 
   style={{
     backgroundColor: 'white',
     borderColor: 'white',
@@ -213,8 +223,16 @@ const App = () => {
 ><EditOutlined />
 
 </Button>
-          
-          <DeleteOutlined />
+          <Button type="primary" onClick={() => setModalVisible3(true)} 
+  style={{
+    backgroundColor: 'white',
+    borderColor: 'white',
+    color: 'black',
+  }}
+> 
+ <DeleteOutlined /></Button>
+
+        
         </Space>
       ),
     },
@@ -231,7 +249,7 @@ const App = () => {
     </div>
   </Col>
   <Col>
-   <Button type="primary" onClick={() => setModalVisible(true)} 
+   <Button type="primary" onClick={() => setModalVisible1(true)} 
   icon={<PlusOutlined />}
   style={{
     backgroundColor: 'orange',
@@ -245,14 +263,19 @@ const App = () => {
   </Col>
 </Row>
    <AddCompanyModal
-        visible={modalVisible}
-        onCancel={() => setModalVisible(false)}
+        visible={modalVisible1}
+        onCancel={() => setModalVisible1(false)}
         onAdd={handleAdd}
       />
        <EditScreen
-        visible={modalVisible}
-        onCancel={() => setModalVisible(false)}
-        onAdd={handleAdd}
+        visible={modalVisible2}
+        onCancel={() => setModalVisible2(false)}
+        onEdit={handleEdit}
+      />
+        <ConfirmDelete
+        visible={modalVisible3}
+        onCancel={() => setModalVisible3(false)}
+        onDelete={handleDelete}
       />
 <div  style={{
     border: '1px solid gray',

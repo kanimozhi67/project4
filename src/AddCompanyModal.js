@@ -24,7 +24,7 @@ const AddCompanyModal = ({ visible, onCancel, onAdd }) => {
          centered
        title={
         <div style={{ position: 'relative', paddingRight: 40 }}>
-          Add New Company
+         <h2>Add New Company</h2> 
           <Button
             type="text"
             shape="circle"

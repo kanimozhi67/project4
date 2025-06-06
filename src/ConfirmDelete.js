@@ -27,7 +27,7 @@ const ConfirmDelete = ({visible, onCancel, onDelete }) => {
         <Button key="cancel" onClick={onCancel}
          >
           Cancel
-        </Button>,
+        </Button>
         <Button key="submit" type="primary" onClick={onDelete}
          style={{
     backgroundColor: 'red',
@@ -36,10 +36,12 @@ const ConfirmDelete = ({visible, onCancel, onDelete }) => {
    
   }}>
           Yes, Delete
-        </Button>,
+        </Button>
       </div>}
     >
-    <p style={{ fontSize:20, }}>you want to delete all the marked items, that can't be undo 
+    <p  justify="space-between" align="middle"
+     style={{ 
+      fontSize:20, margin:15}}>you want to delete all the marked items, that can't be undo 
             once you delete.
           </p>
     </Modal>

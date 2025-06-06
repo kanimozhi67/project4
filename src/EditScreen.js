@@ -24,7 +24,7 @@ const EditScreen = ({ visible, onCancel, onAdd }) => {
          centered
        title={
         <div style={{ position: 'relative', paddingRight: 40 }}>
-          Edit Company
+        <h1>  Edit Company</h1>
           <Button
             type="text"
             shape="circle"
